@@ -1,6 +1,6 @@
 <template>
-  <div class="app">
-    <h1>All Notes of All Octaves</h1>
+  <div class="js-music-notes">
+    <h1>JS Music Notes</h1>
     <p>
       Press Key Up and Down to change the selection of octaves. <br />
       Press from 1 to + to play notes of the first selected octave. <br />
@@ -14,8 +14,8 @@
         </option>
       </select>
     </div>
-    <div class="container">
-      <div class="octave" v-for="(notes, octave) of octavesNotes" :key="octave">
+    <div class="js-music-notes__container">
+      <div class="js-music-notes__octave" v-for="(notes, octave) of octavesNotes" :key="octave">
         <NoteKey
           ref="noteKeys"
           :id="note + octave"
@@ -26,7 +26,7 @@
           :instrument="instrument"
         />
       </div>
-      <div ref="notesSelection" class="notes-selection"></div>
+      <div ref="notesSelection" class="js-music-notes__notes-selection"></div>
     </div>
     <small>All sounds is created by Javascript, no sound file is used</small>
   </div>
@@ -121,31 +121,32 @@ function setNotesSelectionTop(key: string) {
 </script>
 
 <style lang="scss" scoped>
-.app {
+.js-music-notes {
   text-align: center;
-}
-.container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0.5rem;
-}
 
-.octave {
-  display: flex;
-  gap: 0.5rem;
-}
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
 
-.notes-selection {
-  position: absolute;
-  width: 100%;
-  height: calc(100% / 4);
-  top: v-bind(notesSelectionTop);
-  left: 0;
-  border: 1px yellow solid;
-  border-radius: 0.5rem;
-  transition: ease-in-out 0.3s;
-  pointer-events: none;
+  &__octave {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__notes-selection {
+    position: absolute;
+    width: 100%;
+    height: calc(100% / 4);
+    top: v-bind(notesSelectionTop);
+    left: 0;
+    border: 1px yellow solid;
+    border-radius: 0.5rem;
+    transition: ease-in-out 0.3s;
+    pointer-events: none;
+  }
 }
 </style>
