@@ -76,8 +76,6 @@ const instruments: Instrument[] = ['piano', 'bass']
 const octavesNotes = Array.from({ length: 8 }, () => NOTES)
 useKeyboard(
   ({ key, repeat }) => {
-    console.log('down', key)
-
     if (repeat) {
       return
     }
@@ -85,11 +83,7 @@ useKeyboard(
     setNotesSelectionTop(key)
     togglePressedNote(key)
   },
-  ({ key }) => {
-    console.log('up', key)
-
-    togglePressedNote(key)
-  }
+  ({ key }) => togglePressedNote(key)
 )
 
 function togglePressedNote(key: string) {
